@@ -1,0 +1,156 @@
+[
+ 
+	// ff/fg でタブを前後移動出来るようにする．
+	{
+		"keys": ["f", "g"],
+		"command": "next_view",
+		"context":
+		[
+			{ "key": "setting.is_widget", "operand": false },
+			{ "key": "setting.command_mode" }
+		]
+	},
+	{
+		"keys": ["f", "f"],
+		"command": "prev_view",
+		"context":
+	[
+		{ "key": "setting.is_widget", "operand": false },
+		{ "key": "setting.command_mode" }
+	]
+	},	
+ 
+ 	// sp で画面の縦分割、vs で画面の横分割がされるようにする．
+    	{
+		"keys": ["s", "p"], "command": "simple_clone",
+		"args":
+		{
+			"location": "right",
+		},
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.right" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+	{
+		"keys": ["v", "s"], "command": "simple_clone",
+		"args":
+		{
+			"location": "down",
+		},
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	}, 
+ 
+	// command + w を潰す．
+	{
+		"keys": ["super+w", "w"],
+		"command": "focus_neighboring_group",
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+	{
+		"keys": ["super+w", "W"],
+		"command": "focus_neighboring_group",
+		"args": {"forward": false},
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+ 
+	// command + r で redo 出来るようにする．
+	{
+		"keys": ["super+r"],
+		"command": "redo"
+	},
+ 
+	// 検索ペレットをcommand+fに割り当てる．
+	{
+		"keys": ["super+f"],
+		"command": "show_overlay",
+		"args": {"overlay": "goto"},
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+ 
+	// shift + i に複数行同時挿入を割り当てる．
+	// (カーソル移動　選択) カレントワードを選択する．すでに文字列を選択中の場合は文字列を検索して順次選択する．
+	{
+		"keys": ["shift+i"],
+		"command": "find_under_expand",
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+ 
+	// 選択範囲を" , "でコメントアウトする．
+	{
+		"keys": [","],
+		"command": "toggle_comment",
+		"args": { "block": false },
+		"context":
+		[
+			{ "key": "simpleclone_keymap_enabled.down" },
+			{ "key": "setting.command_mode" },
+		]
+	},
+ 
+	// jj で挿入モードから抜ける．
+	{
+		"keys": ["j","j"],
+		"command": "exit_insert_mode",
+		"context":
+		[
+			{ "key": "setting.command_mode", "operand": false },
+			{ "key": "setting.is_widget", "operand": false }
+		]
+	},
+ 
+	// スニペット展開ができるかもしれない
+	{
+ 		"keys": [
+ 		    "ctrl+e"
+ 		], 
+ 		"args": {
+ 		    "action": "expand_abbreviation"
+ 		}, 
+ 		"command": "run_emmet_action", 
+ 		"context": [
+ 		    {
+ 		        "key": "emmet_action_enabled.expand_abbreviation"
+ 		    }
+ 		]
+	}, 
+	{
+		"keys": [
+			"ctrl+alt+up"
+		],
+		"command": "select_lines",
+		"args": {
+			"forward": false
+		}
+	}, 
+	{
+		"keys": [
+			"ctrl+alt+down"
+		],
+		"command": "select_lines",
+		"args": {
+			"forward": true
+		}
+	}, 
+]
